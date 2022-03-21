@@ -1,5 +1,8 @@
 # pandoc-linear-table
 
+I created this filter so that I would have an easy way to wrap text
+in table cells.
+
 ## Usage
 
 Use this filter by adding `--filter=pandoc-linear-table` to your pandoc command.
@@ -15,12 +18,12 @@ For example:
     Use a blank line to indicate the end of a row.
 
     ` `
-    To leave a column blank, use ` `. See the previous cell for an example.
-    I call these "linear tables" because it kind of looks like a table if you look at it sideways.
+    To leave a column blank, use some sort of hard space. See the previous cell for an example.
+    I call these "linear tables" because it kind of looks like a table if you look at it sideways. In hindsight, I should have called them sideways tables.
 
-    You can include LaTex formulas and other markup. for example: $(\bigcap_{x \in \mathscr{C}} X)'$
-    Here's an [example of a link](https://github.com/mhwombat/pandoc-linear-table)
-    And an image: ![](https://github.com/)
+    You can include other markup. Here's an [example of a link](https://github.com/mhwombat/pandoc-linear-table).
+    You can include LaTex formulas. For example: $(\bigcap_{x \in \mathscr{C}} X)'$
+    That's about all there is to know.
     ```
 
 Depending on your output format, the result of the above will look
