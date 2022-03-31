@@ -1,13 +1,35 @@
+{-|
+Module      : LinearTable
+Description : An easy way to create tables with wrapped text in Markdown.
+Copyright   : (c) Amy de Buitléir, 2022
+License     : BSD--3
+Maintainer  : amy@nualeargais.ie
+Stability   : experimental
+Portability : POSIX
+
+See <https://github.com/mhwombat/pandoc-linear-table> for information
+on how to use this filter.
+-}
+
 {-# LANGUAGE OverloadedStrings #-}
+
+module Text.Pandoc.Filters.LinearTable
+  (
+    transform,
+    formatLinearTable
+  ) where
 
 import           Data.Foldable            (foldl')
 import qualified Data.Text                as T
 import qualified Text.Pandoc              as P
-import           Text.Pandoc.JSON         (toJSONFilter)
+import           Text.Pandoc.Walk         (walk)
 
-main :: IO ()
-main = toJSONFilter formatLinearTable
 
+-- | A transformation that can be used with Hakyll.
+transform :: P.Pandoc -> P.Pandoc
+transform = walk formatLinearTable
+
+-- | Exported for use by the executable.
 formatLinearTable :: P.Block -> P.Block
 formatLinearTable x@(P.CodeBlock (_,cs,_) s)
   | null cs                  = x
