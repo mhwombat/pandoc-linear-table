@@ -5,10 +5,38 @@ in table cells.
 
 ## Usage
 
+The "Example" section below explains how to use the Markdown
+syntax extensions provided by this filter.
+Then, you can format your document either using pandoc directly,
+or through Hakyll.
+
+### With Pandoc
+
 Use this filter by adding `--filter=pandoc-linear-table` to your pandoc command.
 For example:
 
     pandoc --filter=pandoc-linear-table myfile.md --output=myfile.pdf
+
+### With Hakyll
+
+Use this filter as a transform in Hakyll.
+For example, you could modify `site.hs`, adding
+
+```
+import Text.Pandoc.Filters.LinearTable (transform)
+```
+
+and changing
+
+```
+pandocCompiler
+```
+
+to
+
+```
+pandocCompilerWithTransform defaultHakyllReaderOptions defaultHakyllWriterOptions transform
+```
 
 ## Example
 
