@@ -1,6 +1,6 @@
 cabal-version:      2.4
 name:               pandoc-linear-table
-version:            0.2.0.0
+version:            0.2.0.1
 description:        An easy way to wrap text in tables.
 synopsis:           An easy way to wrap text in tables.
 license:            BSD-3-Clause
