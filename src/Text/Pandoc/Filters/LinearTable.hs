@@ -19,10 +19,10 @@ module Text.Pandoc.Filters.LinearTable
     formatLinearTable
   ) where
 
-import           Data.Foldable            (foldl')
-import qualified Data.Text                as T
-import qualified Text.Pandoc              as P
-import           Text.Pandoc.Walk         (walk)
+import Data.Foldable    (foldl')
+import Data.Text        qualified as T
+import Text.Pandoc      qualified as P
+import Text.Pandoc.Walk (walk)
 
 
 -- | A transformation that can be used with Hakyll.
