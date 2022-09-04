@@ -2,7 +2,9 @@ cabal-version:      3.0
 name:               pandoc-linear-table
 version:            0.2.0.3
 description:        Pandoc filter that makes it easier to wrap text in tables in Markdown.
-synopsis:           A pandoc filter that provides a Markdown extension that supports text wrapping in table cells.
+synopsis:
+    Pandoc filter that provides a Markdown extension that supports text wrapping in table cells.
+homepage:           https://github.com/mhwombat/pandoc-linear-table
 license:            BSD-3-Clause
 license-file:       LICENSE
 author:             Amy de Buitléir
@@ -16,30 +18,27 @@ source-repository head
   type:              git
   location:          https://github.com/mhwombat/pandoc-linear-table.git
 
-common warnings
-    ghc-options: -Wall  -Wunused-packages
-
 common common-stuff
   default-language: Haskell2010
   default-extensions: ImportQualifiedPost
   build-depends:
     base ^>=4.15.1.0,
-    pandoc-types >= 1.22.2 && < 1.23,
+    pandoc-types >= 1.22.2 && < 1.23
+  ghc-options: -Wall  -Wunused-packages
 
 library
-  import:           warnings, common-stuff
+  import:           common-stuff
   hs-source-dirs:   src
   exposed-modules:
     Text.Pandoc.Filters.LinearTable
   build-depends:
     pandoc >= 2.17.1 && < 2.18,
-    text >= 1.2.5 && < 1.3,
+    text >= 1.2.5 && < 1.3
 
 executable pandoc-linear-table
-    import:           warnings, common-stuff
+    import:           common-stuff
     hs-source-dirs:   app
     main-is:          Main.hs
     build-depends:
-        base ^>=4.15.1.0,
         pandoc-linear-table
 
