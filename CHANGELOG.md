@@ -1,5 +1,7 @@
 # Revision history for pandoc-linear-table
 
+0.2.0.4 Improved error message.
+
 0.2.0.3 Reformatted source code.
 
 0.2.0.0 Factored out transform into a separate library for use with Hakyll.
