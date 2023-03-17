@@ -2,7 +2,7 @@ cabal-version:   3.0
 name:            pandoc-linear-table
 version:         0.2.0.5
 synopsis:
-    A pandoc filter that provides a Markdown extension that supports text wrapping in table cells.
+    A pandoc filter that provides a Markdown extension to wrap text in table cells.
 description:
   For more information and a tutorial on how to use this package,
   please see the README at <https://github.com/mhwombat/pandoc-linear-table#readme>.

@@ -2,26 +2,20 @@
   description = "Pandoc Markdown filter that provides a Markdown extension that supports text wrapping in table cells.";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    haskell-flake.url = "github:srid/haskell-flake";
   };
+  outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [ inputs.haskell-flake.flakeModule ];
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
-      {
-        packages = rec {
-          pandoc-linear-table = pkgs.haskellPackages.developPackage {
-            name = "pandoc-linear-table";
-            root = ./.;
-          };
-          default = pandoc-linear-table;
-        };
-        apps = rec {
-          pandoc-linear-table = flake-utils.lib.mkApp { drv = self.packages.${system}.pandoc-linear-table; };
-          default = pandoc-linear-table;
-        };
-      }
-    );
+      perSystem = { self', pkgs, ... }: {
+        haskellProjects.default = {};
+
+        # haskell-flake doesn't set the default package, but you can do it here.
+        packages.default = self'.packages.pandoc-linear-table;
+      };
+    };
 }
