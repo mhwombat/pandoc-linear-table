@@ -1,9 +1,7 @@
 # pandoc-linear-table
 
-I created this filter so that I would have an easy way to wrap text
-in table cells.
-
-## Sample output
+A pandoc filter that provides a Markdown extension that supports text wrapping in table cells.
+Here's an example of the syntax:
 
     ```{.linear-table}
     Each line of text in your markdown becomes a cell in the output table.
@@ -28,6 +26,38 @@ As implemented, you don't have control over the vertical alignment
 of cells.
 This approach is sufficient for my use case, but it may not meet your
 needs!
+
+## Installation
+
+This package is available from Hackage, or as a Nix flake.
+
+### From Hackage
+
+To install from Hackage, use [cabal install](https://cabal.readthedocs.io/en/stable/cabal-commands.html#cabal-install).
+The package name is `pandoc-logic-proof`.
+
+### As a Nix flake
+
+Note: Flakes must be [enabled](https://nixos.wiki/wiki/Flakes) in your Nix or NixOS installation.
+
+One way to use the Nix flake is to create a `shell.nix` with pandoc and this package, like so:
+
+~~~
+with (import <nixpkgs> {});
+let
+  pandoc-include-plus = (builtins.getFlake git+https://codeberg.org/mhwombat/pandoc-include-plus).packages.${builtins.currentSystem}.default;
+in
+mkShell {
+  buildInputs = [
+    pandoc
+    pandoc-linear-table
+    # add any other software you want to use in the shell.
+  ];
+}
+~~~
+
+Enter the shell using `nix-shell`.
+Now you can use the commands below.
 
 ## Transforming your document
 
@@ -61,4 +91,3 @@ to
 ```
 pandocCompilerWithTransform defaultHakyllReaderOptions defaultHakyllWriterOptions transform
 ```
-
