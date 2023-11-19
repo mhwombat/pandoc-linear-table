@@ -36,7 +36,7 @@ This package is available from Hackage, or as a Nix flake.
 To install from Hackage, use [cabal install](https://cabal.readthedocs.io/en/stable/cabal-commands.html#cabal-install).
 The package name is `pandoc-logic-proof`.
 
-### As a Nix flake
+### In a Nix shell
 
 Note: Flakes must be [enabled](https://nixos.wiki/wiki/Flakes) in your Nix or NixOS installation.
 
@@ -56,8 +56,22 @@ mkShell {
 }
 ~~~
 
-Enter the shell using `nix-shell`.
-Now you can use the commands below.
+Enter the shell using `nix-shell`, and this package will be available for use.
+
+### In a Nix flake
+
+Add pandoc-linear-table to your `flake.nix`:
+
+```nix
+{
+  inputs.pandoc-linear-table.url = "github:mhwombat/pandoc-linear-table";
+
+  outputs = { self, pandoc-linear-table }: {
+    # Use in your outputs
+  };
+}
+
+```
 
 ## Transforming your document
 
