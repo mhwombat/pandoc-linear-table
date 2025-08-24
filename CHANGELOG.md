@@ -1,5 +1,7 @@
 # Revision history for pandoc-linear-table
 
+0.2.0.6 Updated dependencies.
+
 0.2.0.5 Packaged as a Nix flake.
 
 0.2.0.4 Improved error message.
